@@ -1,6 +1,7 @@
 'use client';
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useState } from 'react';
+import { Euler } from 'three';
 import Loader from '@/app/components/Loader';
 import FantasyIsland from '@/app/models/FantasyIsland';
 import Sky from '@/app/models/Sky';
@@ -41,6 +42,7 @@ const ClientCanvas = () => {
 
   const [islandScale, islandPosition, rotation] = adjustIslandForScreenSize();
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
+  const planeRotation = new Euler(0, 20, 0);
 
   return (
     <Canvas
@@ -56,7 +58,7 @@ const ClientCanvas = () => {
           planeScale={planeScale}
           planePosition={planePosition}
           isRotating={isRotating}
-          rotation={[0, 20, 0]}
+          rotation={planeRotation}
         />
         <Dragon />
         <Sky />

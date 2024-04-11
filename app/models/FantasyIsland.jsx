@@ -22,7 +22,6 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
 
   const handlePointerDown = (event) => {
     event.stopPropagation();
-    event.preventDefault();
     setIsRotating(true);
 
     const clientX = event.touches ? event.touches[0].clientX : event.clientX;
@@ -32,13 +31,11 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
 
   const handlePointerUp = (event) => {
     event.stopPropagation();
-    event.preventDefault();
     setIsRotating(false);
   };
 
   const handlePointerMove = (event) => {
     event.stopPropagation();
-    event.preventDefault();
     if (isRotating) {
       const clientX = event.touches ? event.touches[0].clientX : event.clientX;
 
@@ -74,7 +71,6 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
 
   const handleTouchStart = (e) => {
     e.stopPropagation();
-    e.preventDefault();
     setIsRotating(true);
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -83,13 +79,11 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
 
   const handleTouchEnd = (e) => {
     e.stopPropagation();
-    e.preventDefault();
     setIsRotating(false);
   };
 
   const handleTouchMove = (e) => {
     e.stopPropagation();
-    e.preventDefault();
 
     if (isRotating) {
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -103,24 +97,26 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
 
   useLayoutEffect(() => {
     const canvas = gl.domElement;
-    canvas.addEventListener('pointerdown', handlePointerDown);
-    canvas.addEventListener('pointerup', handlePointerUp);
-    canvas.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-    canvas.addEventListener('touchstart', handleTouchStart);
-    canvas.addEventListener('touchend', handleTouchEnd);
-    canvas.addEventListener('touchmove', handleTouchMove);
+    const eventOptions = { passive: true };
+
+    canvas.addEventListener('pointerdown', handlePointerDown, eventOptions);
+    canvas.addEventListener('pointerup', handlePointerUp, eventOptions);
+    canvas.addEventListener('pointermove', handlePointerMove, eventOptions);
+    window.addEventListener('keydown', handleKeyDown, eventOptions);
+    window.addEventListener('keyup', handleKeyUp, eventOptions);
+    canvas.addEventListener('touchstart', handleTouchStart, eventOptions);
+    canvas.addEventListener('touchend', handleTouchEnd, eventOptions);
+    canvas.addEventListener('touchmove', handleTouchMove, eventOptions);
 
     return () => {
-      canvas.removeEventListener('pointerdown', handlePointerDown);
-      canvas.removeEventListener('pointerup', handlePointerUp);
-      canvas.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-      canvas.removeEventListener('touchstart', handleTouchStart);
-      canvas.removeEventListener('touchend', handleTouchEnd);
-      canvas.removeEventListener('touchmove', handleTouchMove);
+      canvas.removeEventListener('pointerdown', handlePointerDown, eventOptions);
+      canvas.removeEventListener('pointerup', handlePointerUp, eventOptions);
+      canvas.removeEventListener('pointermove', handlePointerMove, eventOptions);
+      window.removeEventListener('keydown', handleKeyDown, eventOptions);
+      window.removeEventListener('keyup', handleKeyUp, eventOptions);
+      canvas.removeEventListener('touchstart', handleTouchStart, eventOptions);
+      canvas.removeEventListener('touchend', handleTouchEnd, eventOptions);
+      canvas.removeEventListener('touchmove', handleTouchMove, eventOptions);
     };
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
 
