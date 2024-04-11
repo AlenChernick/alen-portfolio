@@ -1,12 +1,15 @@
 'use client';
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Loader from '@/app/components/Loader';
 import FantasyIsland from '@/app/models/FantasyIsland';
 import Sky from '@/app/models/Sky';
 import Dragon from '@/app/models/Dragon';
+import Plane from '@/app/models/Plane';
 
 const ClientCanvas = () => {
+  const [isRotating, setIsRotating] = useState(false);
+
   const adjustIslandForScreenSize = () => {
     const screenPosition = [0, -8.5, -43];
     const rotation = [0.1, 8.8, 0];
@@ -29,6 +32,7 @@ const ClientCanvas = () => {
         <directionalLight position={[5, 10, 1]} intensity={2.5} />
         <ambientLight intensity={0.5} />
         <hemisphereLight color='#b1e1ff' groundColor='#000000' intensity={1} />
+        <Plane />
         <Dragon />
         <Sky />
         <FantasyIsland
