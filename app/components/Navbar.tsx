@@ -26,6 +26,13 @@ const Navbar: FC = () => {
           activeClass='text-blue-500'
           defaultClass='text-black'
         />
+        <ClientLink
+          text='Contact'
+          href='/contact'
+          title='contact-page'
+          activeClass='text-blue-500'
+          defaultClass='text-black'
+        />
       </nav>
     </header>
   );
