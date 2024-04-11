@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import Loader from '@/app/components/Loader';
 import FantasyIsland from '@/app/models/FantasyIsland';
 import Sky from '@/app/models/Sky';
+import Dragon from '@/app/models/Dragon';
 
 const ClientCanvas = () => {
   const adjustIslandForScreenSize = () => {
@@ -28,6 +29,7 @@ const ClientCanvas = () => {
         <directionalLight position={[5, 10, 1]} intensity={2.5} />
         <ambientLight intensity={0.5} />
         <hemisphereLight color='#b1e1ff' groundColor='#000000' intensity={1} />
+        <Dragon />
         <Sky />
         <FantasyIsland
           position={islandPosition}
