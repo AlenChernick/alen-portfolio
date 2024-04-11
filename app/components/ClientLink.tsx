@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import type { ClientLink } from '@/app/types/types';
+import type { ClientLink } from '@/app/types/mainTypes';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -9,7 +9,10 @@ const ClientLink: FC<ClientLink> = ({ text, href, title, activeClass, defaultCla
   const pathname = usePathname();
 
   return (
-    <Link href={href} title={title} className={`${pathname === href ? activeClass : defaultClass}`}>
+    <Link
+      href={href}
+      title={title}
+      className={`${pathname === href ? activeClass : defaultClass}`}>
       {text}
     </Link>
   );
