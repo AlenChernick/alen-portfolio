@@ -6,7 +6,7 @@ const Loader: FC = () => {
   return (
     <Html>
       <section className='flex justify-center items-center'>
-        <section className='w-20 h-20 border-2 border-opacity-20 border-blue-500 border-t-blue-500 rounded-full animate-spin' />
+        <section className='relative sm:right-24 right-20 bottom-32 w-40 h-40 p-10 border-2 border-opacity-20 border-blue-500 border-t-blue-500 rounded-full animate-spin' />
       </section>
     </Html>
   );
