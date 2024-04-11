@@ -1,18 +1,23 @@
-'use client';
-
-import { type FC, useLayoutEffect, useRef } from 'react';
+import { FC, useLayoutEffect, useRef, Ref } from 'react';
 import { useAnimations, useGLTF } from '@react-three/drei';
 import type { PlaneProps } from '@/app/types/planeTypes';
+import { Mesh } from 'three';
 
 const Plane: FC<PlaneProps> = ({ isRotating, ...props }) => {
-  const ref = useRef();
+  const ref = useRef<Mesh>(null!);
   const { scene, animations } = useGLTF('/assets/3d/plane.glb');
   const { actions } = useAnimations(animations, ref);
 
-  useLayoutEffect(() => {}, [actions, isRotating]);
+  useLayoutEffect(() => {
+    if (isRotating) {
+      actions['Take 001']?.play();
+    } else {
+      actions['Take 001']?.stop();
+    }
+  }, [actions, isRotating]);
 
   return (
-    <mesh {...props}>
+    <mesh {...props} ref={ref}>
       <primitive object={scene} />
     </mesh>
   );

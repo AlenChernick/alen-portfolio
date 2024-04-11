@@ -54,12 +54,6 @@ const ClientCanvas = () => {
         <directionalLight position={[5, 10, 1]} intensity={2.5} />
         <ambientLight intensity={0.5} />
         <hemisphereLight color='#b1e1ff' groundColor='#000000' intensity={1} />
-        <Plane
-          planeScale={planeScale}
-          planePosition={planePosition}
-          isRotating={isRotating}
-          rotation={planeRotation}
-        />
         <Dragon />
         <Sky />
         <FantasyIsland
@@ -69,6 +63,12 @@ const ClientCanvas = () => {
           isRotating={isRotating}
           setIsRotating={setIsRotating}
           setCurrentStage={setCurrentStage}
+        />
+        <Plane
+          planeScale={planeScale}
+          planePosition={planePosition}
+          isRotating={isRotating}
+          rotation={planeRotation}
         />
       </Suspense>
     </Canvas>

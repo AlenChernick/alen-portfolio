@@ -9,9 +9,9 @@ const Navbar: FC = () => {
         href='/'
         title='home-page'
         className='w-11 h-11 rounded-lg bg-white items-center justify-center flex font-bold shadow-md'>
-        <span className='text-sky-300/70 text-lg'>AC</span>
+        <h1 className='text-sky-500ssssss/100 text-xl'>AC</h1>
       </Link>
-      <nav className='flex text-lg gap-7 font-medium'>
+      <nav className='flex text-xl gap-7 font-medium'>
         <ClientLink
           text='About'
           href='/about'
