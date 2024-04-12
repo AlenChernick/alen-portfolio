@@ -21,3 +21,15 @@
     text-wrap: balance;
   }
 }
+
+.info-box {
+  @apply mx-5 bg-[#419efc] shadow-xl box-shadow-blue rounded-md relative flex text-white flex-col gap-3 max-w-2xl pt-4 pb-12 px-8;
+}
+
+.box-shadow-blue {
+  box-shadow: -2px 2px 0px #3a98f7, -5px 3px 0px #2f97ff;
+}
+
+.box-shadow-white {
+  box-shadow: -2px 2px 0px #e5f2ff, -5px 3px 0px #cadef2;
+}

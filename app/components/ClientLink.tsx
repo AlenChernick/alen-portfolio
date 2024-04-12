@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import type { ClientLink } from '@/app/types/mainTypes';
+import type { ClientLink } from '@/app/types/componentTypes';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 

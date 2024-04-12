@@ -1,6 +1,7 @@
 'use client';
+import { type FC, Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useState } from 'react';
+import { type ClientCanvasProps } from '@/app/types/componentTypes';
 import { Euler } from 'three';
 import Loader from '@/app/components/Loader';
 import FantasyIsland from '@/app/models/FantasyIsland';
@@ -8,13 +9,12 @@ import Sky from '@/app/models/Sky';
 import Bird from '@/app/models/Bird';
 import Plane from '@/app/models/Plane';
 
-const ClientCanvas = () => {
+const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
   const [isRotating, setIsRotating] = useState(false);
-  const [currentStage, setCurrentStage] = useState(1);
 
   const adjustIslandForScreenSize = () => {
-    const screenPosition = [0, -8.5, -43];
-    const rotation = [0.1, 8.8, 0];
+    const screenPosition = [0, -7.5, -45];
+    const rotation = [0.12, 3, 0];
     let screenScale = null;
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
@@ -33,7 +33,7 @@ const ClientCanvas = () => {
       screenScale = [1.5, 1.5, 1.5];
       screenPosition = [0, -1.5, 0];
     } else {
-      screenScale = [3, 3, 3];
+      screenScale = [4, 4, 4];
       screenPosition = [0, -4, 0];
     }
 
