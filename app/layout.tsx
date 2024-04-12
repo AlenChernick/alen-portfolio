@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={poppins.className}>
         <Navbar />
-        <main className='bg-slate-300/20'>{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

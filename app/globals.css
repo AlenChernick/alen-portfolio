@@ -26,6 +26,22 @@
   @apply mx-5 bg-[#419efc] shadow-xl box-shadow-blue rounded-md relative flex text-white flex-col gap-3 max-w-2xl pt-4 pb-12 px-8;
 }
 
+.head-text {
+  @apply sm:text-4xl text-3xl font-semibold sm:leading-snug;
+}
+
+.input {
+  @apply bg-white border border-gray-200 text-gray-900 text-sm rounded-lg block w-full p-2.5 mt-2.5 font-normal transition-shadow duration-300;
+}
+
+.input:focus {
+  @apply focus:shadow outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500;
+}
+
+.btn {
+  @apply text-white bg-gradient-to-r from-[#00a2ff] to-[#57a3ff] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+}
+
 .box-shadow-blue {
   box-shadow: -2px 2px 0px #3a98f7, -5px 3px 0px #2f97ff;
 }

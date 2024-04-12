@@ -11,7 +11,7 @@ const Navbar: FC = () => {
         className='w-11 h-11 rounded-lg bg-white items-center justify-center flex font-bold shadow-md'>
         <span className='text-sky-500/100 text-xl'>AC</span>
       </Link>
-      <nav className='flex text-xl gap-7 font-medium'>
+      <nav className='flex text-xl gap-4 md:gap-7 font-medium'>
         <ClientLink
           text='About'
           href='/about'
