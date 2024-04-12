@@ -1,7 +1,7 @@
 import { FC, useLayoutEffect, useRef, Ref } from 'react';
 import { useAnimations, useGLTF } from '@react-three/drei';
-import type { PlaneProps } from '@/app/types/planeTypes';
-import { Mesh } from 'three';
+import type { PlaneProps } from '@/app/types/modelTypes';
+import type { Mesh } from 'three';
 
 const Plane: FC<PlaneProps> = ({ isRotating, ...props }) => {
   const ref = useRef<Mesh>(null!);

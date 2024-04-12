@@ -51,11 +51,11 @@ const ClientCanvas = () => {
         isRotating ? 'cursor-grabbing' : 'cursor-grab'
       }`}>
       <Suspense fallback={<Loader />}>
-        <directionalLight position={[5, 10, 1]} intensity={2.5} />
-        <ambientLight intensity={0.5} />
+        <directionalLight position={[2, 10, 1]} intensity={2.5} />
+        <ambientLight intensity={1} />
         <hemisphereLight color='#b1e1ff' groundColor='#000000' intensity={1} />
         <Dragon />
-        <Sky />
+        <Sky isRotating={isRotating} />
         <FantasyIsland
           position={islandPosition}
           scale={islandScale}
