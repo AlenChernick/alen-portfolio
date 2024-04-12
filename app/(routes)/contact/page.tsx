@@ -5,6 +5,8 @@ import { Canvas } from '@react-three/fiber';
 import emailjs from '@emailjs/browser';
 import Wolf from '@/app/models/Wolf';
 import Loader from '@/app/components/Loader';
+import useAlert from '@/app/hooks/useAlert';
+import Alert from '@/app/components/Alert';
 
 const ContactPage: NextPage = () => {
   const emailJsServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
@@ -13,16 +15,15 @@ const ContactPage: NextPage = () => {
   const personalEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL as string;
 
   const formRef = useRef(null);
-
   const [form, setForm] = useState<{ name: string; email: string; message: string }>({
     name: '',
     email: '',
     message: '',
   });
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const [currentAnimation, setCurrentAnimation] = useState<string>(`magic_wolf|Idle`);
+
+  const { alert, showAlert, hideAlert } = useAlert();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -50,22 +51,28 @@ const ContactPage: NextPage = () => {
       )
       .then(() => {
         setIsLoading(false);
-        //TODO: Show success message
+        showAlert({ isShow: true, text: 'Message sent successfully!', type: 'success' });
         //TODO: Show hide an alert
 
         setTimeout(() => {
+          hideAlert();
           setCurrentAnimation('magic_wolf|Idle');
           setForm({
             name: '',
             email: '',
             message: '',
           });
-        }, 3000);
+        }, 2000);
       })
       .catch((error) => {
         setIsLoading(false);
         setCurrentAnimation('magic_wolf|Idle');
         console.log(error);
+        showAlert({
+          isShow: false,
+          text: "I didn't receive your message.",
+          type: 'danger',
+        });
         //TODO: Show error message
       });
   };
@@ -74,7 +81,9 @@ const ContactPage: NextPage = () => {
   const handleBlur = () => setCurrentAnimation('magic_wolf|Idle');
 
   return (
-    <section className='relative flex lg:flex-row flex-col max-container mt-24'>
+    <section className='relative flex lg:flex-row flex-col max-container mt-24 px-2'>
+      {alert.show && <Alert {...alert} />}
+      {/* <Alert {...alert} /> */}
       <section className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text px-5'>Get in Touch</h1>
         <form onSubmit={handleSubmit} className='w-full flex flex-col gap-2 mt-10 px-5'>
@@ -116,7 +125,7 @@ const ContactPage: NextPage = () => {
           />
           <button
             type='submit'
-            className='btn'
+            className='btn hover:text-xl transition:text duration-300'
             disabled={isLoading}
             onFocus={handleFocus}
             onBlur={handleBlur}>

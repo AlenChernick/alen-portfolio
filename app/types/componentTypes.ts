@@ -14,6 +14,11 @@ export type HomeInfoProps = {
   currentStage: number;
 };
 
+export type AlertProps = {
+  type: string;
+  text: string;
+};
+
 export type InfoBoxProps = {
   text: string;
   link: string;

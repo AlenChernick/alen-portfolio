@@ -13,12 +13,13 @@ const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
   const [isRotating, setIsRotating] = useState(false);
 
   const adjustIslandForScreenSize = () => {
-    const screenPosition = [0, -7.5, -45];
-    const rotation = [0.12, 3, 0];
+    const rotation = [0.13, 3.89, 0];
+    let screenPosition = [0, -6.8, -45];
     let screenScale = null;
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       screenScale = [0.26, 0.26, 0.26];
+      screenPosition = [0, -5, -42];
     } else {
       screenScale = [0.4, 0.4, 0.4];
     }
@@ -31,7 +32,7 @@ const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, -1.5, 0];
+      screenPosition = [0, -4.5, 0];
     } else {
       screenScale = [4, 4, 4];
       screenPosition = [0, -4, 0];

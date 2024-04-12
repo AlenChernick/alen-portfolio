@@ -39,7 +39,7 @@
 }
 
 .btn {
-  @apply text-white bg-gradient-to-r from-[#00a2ff] to-[#57a3ff] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+  @apply text-white bg-gradient-to-r from-[#00a2ff] to-[#57a3ff] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-5 py-3.5 text-center;
 }
 
 .box-shadow-blue {
@@ -48,4 +48,13 @@
 
 .box-shadow-white {
   box-shadow: -2px 2px 0px #e5f2ff, -5px 3px 0px #cadef2;
+}
+
+.alert-enter {
+  opacity: 0;
+}
+
+.alert-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
