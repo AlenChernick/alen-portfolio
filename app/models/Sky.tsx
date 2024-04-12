@@ -3,7 +3,7 @@
 import { type FC, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { SkyProps } from '@/app/types/modelTypes';
+import type { SkyProps } from '@/app/types/modelTypes';
 import type { Mesh } from 'three';
 
 const Sky: FC<SkyProps> = ({ isRotating }) => {

@@ -1,4 +1,6 @@
-import { FC, useLayoutEffect, useRef, Ref } from 'react';
+'use client';
+
+import { FC, useLayoutEffect, useRef } from 'react';
 import { useAnimations, useGLTF } from '@react-three/drei';
 import type { PlaneProps } from '@/app/types/modelTypes';
 import type { Mesh } from 'three';

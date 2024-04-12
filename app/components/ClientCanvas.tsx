@@ -5,7 +5,7 @@ import { Euler } from 'three';
 import Loader from '@/app/components/Loader';
 import FantasyIsland from '@/app/models/FantasyIsland';
 import Sky from '@/app/models/Sky';
-import Dragon from '@/app/models/Dragon';
+import Bird from '@/app/models/Bird';
 import Plane from '@/app/models/Plane';
 
 const ClientCanvas = () => {
@@ -54,7 +54,7 @@ const ClientCanvas = () => {
         <directionalLight position={[2, 10, 1]} intensity={2.5} />
         <ambientLight intensity={1} />
         <hemisphereLight color='#b1e1ff' groundColor='#000000' intensity={1} />
-        <Dragon />
+        <Bird />
         <Sky isRotating={isRotating} />
         <FantasyIsland
           position={islandPosition}

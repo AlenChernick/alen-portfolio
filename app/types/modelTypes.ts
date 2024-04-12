@@ -10,3 +10,5 @@ export type PlaneProps = {
 export type SkyProps = {
   isRotating: boolean;
 };
+
+export type AnimationActions = Record<string, any>;
