@@ -28,7 +28,7 @@ const ProjectsPage: NextPage = () => {
     const IconComponent = iconComponents[iconName];
     if (!IconComponent) return null;
 
-    return <div className={iconClassName}>{IconComponent}</div>;
+    return <section className={iconClassName}>{IconComponent}</section>;
   };
 
   return (
