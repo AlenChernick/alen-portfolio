@@ -52,7 +52,6 @@ const ContactPage: NextPage = () => {
       .then(() => {
         setIsLoading(false);
         showAlert({ isShow: true, text: 'Message sent successfully!', type: 'success' });
-        //TODO: Show hide an alert
 
         setTimeout(() => {
           hideAlert();
@@ -73,7 +72,6 @@ const ContactPage: NextPage = () => {
           text: "I didn't receive your message.",
           type: 'danger',
         });
-        //TODO: Show error message
       });
   };
 
