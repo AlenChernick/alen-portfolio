@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import type { NextPage } from 'next';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -10,7 +11,7 @@ import type { Experience, Skill } from '@/app/types/constantTypes';
 import CallToAction from '@/app/components/CallToAction';
 import 'react-vertical-timeline-component/style.min.css';
 
-const AboutPage = () => {
+const AboutPage: NextPage = () => {
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: true,
@@ -20,7 +21,7 @@ const AboutPage = () => {
     <section className='page-container lg:flex-col'>
       <h1 className='head-text'>
         Hello, I'm
-        <span className='blue-gradient_text font-semibold drop-shadow'> Alen </span>
+        <span className='blue-gradient_text font-semibold drop-shadow'> Alen</span>
       </h1>
       <section className='mt-5 flex flex-col gap-3 text-slate-500'>
         <p>
@@ -32,11 +33,11 @@ const AboutPage = () => {
         <h3 className='subhead-text'>My Skills</h3>
         <section className='mt-16 flex flex-wrap gap-12'>
           {skills.map((skill: Skill, index: number) => (
-            <div
+            <section
               className='block-container w-20 h-20'
               key={`skill-${skill.name}-${index}`}>
-              <div className='btn-back rounded-xl' />
-              <div className='btn-front rounded-xl flex justify-center items-center'>
+              <section className='btn-back rounded-xl' />
+              <section className='btn-front rounded-xl flex justify-center items-center'>
                 <Image
                   fetchPriority='high'
                   loading='eager'
@@ -44,14 +45,14 @@ const AboutPage = () => {
                   alt={skill.name}
                   className='w-1/2 h-1/2 object-contain'
                 />
-              </div>
-            </div>
+              </section>
+            </section>
           ))}
         </section>
       </section>
       <section className='py-16'>
         <h3 className='subhead-text'>Work Experience</h3>
-        <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+        <section className='mt-5 flex flex-col gap-3 text-slate-500'>
           <p>
             Dedicated to staying abreast of industry trends and emerging technologies, I
             am committed to continuous learning and skill expansion. With a proven track
@@ -59,9 +60,9 @@ const AboutPage = () => {
             contribute effectively to any team. Eager to further enhance my skills and
             expertise in the field.
           </p>
-        </div>
+        </section>
 
-        <div className='mt-12 flex' ref={ref}>
+        <section className='mt-12 flex' ref={ref}>
           <VerticalTimeline>
             {experiences.map((experience: Experience) => (
               <VerticalTimelineElement
@@ -69,13 +70,13 @@ const AboutPage = () => {
                 key={experience.companyName}
                 date={experience.date}
                 icon={
-                  <div className='flex justify-center items-center w-full h-full'>
+                  <section className='flex justify-center items-center w-full h-full'>
                     <Image
                       src={experience.icon}
                       alt={experience.companyName}
                       className='w-[60%] h-[60%] object-contain'
                     />
-                  </div>
+                  </section>
                 }
                 iconStyle={{ background: experience.iconBg }}
                 contentStyle={{
@@ -84,12 +85,12 @@ const AboutPage = () => {
                   borderBottomColor: experience.iconBg,
                   boxShadow: 'none',
                 }}>
-                <div>
+                <section>
                   <h3 className='text-black text-xl font-semibold'>
                     {experience.title}
                     <p className='text-black-500 font-medium'>{experience.companyName}</p>
                   </h3>
-                </div>
+                </section>
 
                 <ul className='my-5 list-disc ml-5 space-y-2'>
                   {experience.points.map((point, index) => (
@@ -103,7 +104,7 @@ const AboutPage = () => {
               </VerticalTimelineElement>
             ))}
           </VerticalTimeline>
-        </div>
+        </section>
       </section>
       <hr className='border-slate-200' />
       <CallToAction />

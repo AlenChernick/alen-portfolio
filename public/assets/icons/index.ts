@@ -15,7 +15,6 @@ import typescript from '@/public/assets/icons/typescript.svg';
 import linkedin from '@/public/assets/icons/linkedin.svg';
 import twitter from '@/public/assets/icons/twitter.svg';
 import pricewise from '@/public/assets/icons/pricewise.svg';
-import arrow from '@/public/assets/icons/arrow.svg';
 import contact from '@/public/assets/icons/contact.svg';
 import soundon from '@/public/assets/icons/soundon.png';
 import soundoff from '@/public/assets/icons/soundoff.png';
@@ -68,7 +67,6 @@ export {
   linkedin,
   twitter,
   pricewise,
-  arrow,
   contact,
   soundon,
   soundoff,

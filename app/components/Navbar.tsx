@@ -4,7 +4,7 @@ import ClientLink from './ClientLink';
 
 const Navbar: FC = () => {
   return (
-    <header className='flex justify-between items-center sm:px-6 max-w-6xl m-auto px-4 py-4 absolute top-0 bg-transparent z-10 right-0 left-0'>
+    <header className='flex justify-between items-center sm:px-6 max-w-5xl m-auto px-4 py-4 absolute top-0 bg-transparent z-10 right-0 left-0'>
       <Link
         href='/'
         title='home-page'

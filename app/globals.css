@@ -51,11 +51,11 @@
 }
 
 .page-container {
-  @apply relative flex lg:flex-row flex-col mt-24 px-5 max-w-6xl justify-center m-auto;
+  @apply relative flex lg:flex-row flex-col mt-24 px-5 max-w-5xl justify-center m-auto;
 }
 
 .cta {
-  @apply w-full flex items-center md:flex-row flex-col sm:my-16 my-8 gap-7;
+  @apply w-full flex items-center md:flex-row flex-col sm:my-16 my-8 gap-7 transition-all duration-300;
 }
 
 .cta-text {
@@ -125,6 +125,10 @@
 
 .block-container .btn-back-black {
   background: linear-gradient(135deg, #0a1647 -20%, #e4e7e4 120%);
+}
+
+.block-container .btn-back-purple {
+  background: linear-gradient(135deg, rgb(85 99 233) -20%, #a8a8a8 120%);
 }
 
 .block-container .btn-front {

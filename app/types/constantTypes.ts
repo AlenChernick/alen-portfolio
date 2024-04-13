@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type Skill = {
   imageUrl: string;
   name: string;
@@ -20,7 +22,7 @@ export type SocialLink = {
 };
 
 export type Project = {
-  iconUrl: string;
+  iconName: string;
   theme: string;
   name: string;
   description: string;

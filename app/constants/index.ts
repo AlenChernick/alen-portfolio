@@ -223,11 +223,51 @@ export const socialLinks: SocialLink[] = [
 
 export const projects: Project[] = [
   {
-    iconUrl: pricewise,
-    theme: 'btn-back-red',
-    name: 'Amazon Price Tracker',
+    iconName: 'BsDiscord',
+    theme: 'btn-back-purple',
+    name: 'Discord Clone - Group Chat',
     description:
-      'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-    link: 'https://github.com/urlink',
+      'inspired by Discord using TypeScript, Next.js 14, Tailwind CSS, Prisma, MySQL, WebSocket, Zustand State Management and more.',
+    link: 'https://github.com/AlenChernick/discord_clone',
+  },
+  {
+    iconName: 'BsTiktok',
+    theme: 'btn-back-red',
+    name: 'TikTok Clone - TikTik',
+    description:
+      'inspired by TikTok using TypeScript, Next.js 12, Tailwind CSS, Sanity CMS & Schemaless Database, Zustand State Management and more.',
+    link: 'https://github.com/AlenChernick/tiktik_app',
+  },
+  {
+    iconName: 'BsTrello',
+    theme: 'btn-back-blue',
+    name: 'Trello Clone - Shmerllo',
+    description:
+      'inspired by Trello using Vue.js, Sass, Node.js, MongoDB, WebSocket, Vuex State Management and more.',
+    link: 'https://github.com/AlenChernick/Sprint4-Shmerllo-frontend',
+  },
+  {
+    iconName: 'BsFillPersonFill',
+    theme: 'btn-back-yellow',
+    name: 'Job Search App',
+    description:
+      'Discover your next career move with our Job Search app, crafted with React Native and Expo Router for effortless job exploration',
+    link: 'https://github.com/AlenChernick/react_native_jobs_app',
+  },
+  {
+    iconName: 'MdAdminPanelSettings',
+    theme: 'btn-back-black',
+    name: 'Fhoppy - Admin Dashboard',
+    description:
+      'Fhoppy is an Admin Demo Dashboard App showcasing a plethora of features including theming, tables, charts, calendar, Kanban, and more. Built solely on the frontend using React, React Context, and Tailwind CSS.',
+    link: 'https://github.com/AlenChernick/fhoppy-admin-dashboard',
+  },
+  {
+    iconName: 'BsFillPersonVcardFill',
+    theme: 'btn-back-orange',
+    name: 'Alen Chernick - Full Stack Developer Portfolio',
+    description:
+      'This Portfolio built with Next.js 14, TypeScript, Tailwind CSS, and Three.js, integrated with Email.js for seamless communication.',
+    link: 'https://github.com/AlenChernick/alen-portfolio',
   },
 ];
