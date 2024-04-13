@@ -6,21 +6,32 @@ import HomeInfo from '@/app/components/HomeInfo';
 import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 
 const HomePage: NextPage = () => {
-  const audioRef = useRef(new Audio('/assets/sakura.mp3'));
-  audioRef.current.volume = 0.4;
-  audioRef.current.loop = true;
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [currentStage, setCurrentStage] = useState<number>(1);
   const [isPlayingMusic, setIsPlayingMusic] = useState<boolean>(false);
 
   useLayoutEffect(() => {
-    if (isPlayingMusic) {
-      audioRef.current.play();
+    if (audioRef.current) {
+      if (isPlayingMusic) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
     }
+  }, [isPlayingMusic]);
+
+  useLayoutEffect(() => {
+    const audioElement = new Audio('/assets/sakura.mp3');
+    audioElement.volume = 0.4;
+    audioElement.loop = true;
+    audioRef.current = audioElement;
 
     return () => {
-      audioRef.current.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
-  }, [isPlayingMusic]);
+  }, []);
 
   return (
     <section className='w-full h-screen relative'>

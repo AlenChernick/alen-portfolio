@@ -19,7 +19,6 @@ import {
   csharp,
   dotnet,
   nestjs,
-  pricewise,
   react,
   vuejs,
   angular,

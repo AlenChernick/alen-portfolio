@@ -71,7 +71,6 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
         if (!isRotating) setIsRotating(true);
 
         islandRef.current.rotation.y -= 0.01 * Math.PI;
-        rotationSpeed.current = -0.007;
         rotationSpeed.current = -0.0125;
       }
     },
@@ -158,8 +157,6 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
     isRotating,
     setIsRotating,
     viewport.width,
-    rotationSpeed,
-    islandRef,
   ]);
 
   useFrame(() => {
