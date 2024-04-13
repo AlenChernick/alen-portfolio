@@ -4,7 +4,7 @@ import ClientLink from './ClientLink';
 
 const Navbar: FC = () => {
   return (
-    <header className='flex justify-between items-center sm:px-6 px-4 py-4 absolute top-0 bg-transparent z-10 right-0 left-0'>
+    <header className='flex justify-between items-center sm:px-6 max-w-6xl m-auto px-4 py-4 absolute top-0 bg-transparent z-10 right-0 left-0'>
       <Link
         href='/'
         title='home-page'
@@ -13,27 +13,27 @@ const Navbar: FC = () => {
           AC
         </span>
       </Link>
-      <nav className='flex items-center sm:text-2xl text-xl drop-shadow-lg gap-1 md:gap-7 font-medium'>
+      <nav className='flex items-center sm:text-2xl text-lg drop-shadow-lg md:gap-7 gap-4 font-medium'>
         <ClientLink
           text='About'
           href='/about'
           title='about-page'
-          activeClass='text-blue-500 px-3 py-1 hover:bg-[#2f97ff] rounded-lg transition-bg transition-all duration-300'
-          defaultClass='text-black px-3 py-1 hover:bg-[#2f97ff] rounded-lg transition-bg transition-all duration-300'
+          activeClass='text-blue-500'
+          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300'
         />
         <ClientLink
           text='Projects'
           href='/projects'
           title='projects-page'
-          activeClass='text-blue-500 px-3 py-1 hover:bg-[#2f97ff] rounded-lg transition-bg transition-all duration-300'
-          defaultClass='text-black px-3 py-1 hover:bg-[#2f97ff] rounded-lg transition-bg transition-all duration-300'
+          activeClass='text-blue-500'
+          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300'
         />
         <ClientLink
           text='Contact'
           href='/contact'
           title='contact-page'
-          activeClass='text-blue-500 px-3 py-1 hover:bg-[#2f97ff] rounded-lg transition-bg transition-all duration-300'
-          defaultClass='text-black px-3 py-1 hover:bg-[#2f97ff] rounded-lg transition-bg transition-all duration-300'
+          activeClass='text-blue-500'
+          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300'
         />
       </nav>
     </header>

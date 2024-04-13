@@ -8,7 +8,7 @@ Source: https://sketchfab.com/3d-models/fantasy-island-88765d3c5db349e59c39cf9f5
 Title: Fantasy_Island
 */
 
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useCallback } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { a } from '@react-spring/three';
 import { useThree, useFrame } from '@react-three/fiber';
@@ -22,80 +22,104 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
   const rotationSpeed = useRef(0);
   const dampingFactor = 0.95;
 
-  const handlePointerDown = (event) => {
-    event.stopPropagation();
-    setIsRotating(true);
+  const handlePointerDown = useCallback(
+    (event) => {
+      event.stopPropagation();
+      setIsRotating(true);
 
-    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-
-    lastX.current = clientX;
-  };
-
-  const handlePointerUp = (event) => {
-    event.stopPropagation();
-    setIsRotating(false);
-  };
-
-  const handlePointerMove = (event) => {
-    event.stopPropagation();
-    if (isRotating) {
       const clientX = event.touches ? event.touches[0].clientX : event.clientX;
 
-      const delta = (clientX - lastX.current) / viewport.width;
-
-      islandRef.current.rotation.y += delta * 0.01 * Math.PI;
-
       lastX.current = clientX;
+    },
+    [setIsRotating]
+  );
 
-      rotationSpeed.current = delta * 0.01 * Math.PI;
-    }
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowLeft') {
-      if (!isRotating) setIsRotating(true);
-
-      islandRef.current.rotation.y += 0.005 * Math.PI;
-      rotationSpeed.current = 0.007;
-    } else if (event.key === 'ArrowRight') {
-      if (!isRotating) setIsRotating(true);
-
-      islandRef.current.rotation.y -= 0.005 * Math.PI;
-      rotationSpeed.current = -0.007;
-    }
-  };
-
-  const handleKeyUp = (event) => {
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+  const handlePointerUp = useCallback(
+    (event) => {
+      event.stopPropagation();
       setIsRotating(false);
-    }
-  };
+    },
+    [setIsRotating]
+  );
 
-  const handleTouchStart = (e) => {
-    e.stopPropagation();
-    setIsRotating(true);
+  const handlePointerMove = useCallback(
+    (event) => {
+      event.stopPropagation();
+      if (isRotating) {
+        const clientX = event.touches ? event.touches[0].clientX : event.clientX;
 
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    lastX.current = clientX;
-  };
+        const delta = (clientX - lastX.current) / viewport.width;
 
-  const handleTouchEnd = (e) => {
-    e.stopPropagation();
-    setIsRotating(false);
-  };
+        islandRef.current.rotation.y += delta * 0.01 * Math.PI;
 
-  const handleTouchMove = (e) => {
-    e.stopPropagation();
+        lastX.current = clientX;
 
-    if (isRotating) {
+        rotationSpeed.current = delta * 0.01 * Math.PI;
+      }
+    },
+    [isRotating, viewport.width]
+  );
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'ArrowLeft') {
+        if (!isRotating) setIsRotating(true);
+
+        islandRef.current.rotation.y += 0.005 * Math.PI;
+        rotationSpeed.current = 0.007;
+      } else if (event.key === 'ArrowRight') {
+        if (!isRotating) setIsRotating(true);
+
+        islandRef.current.rotation.y -= 0.005 * Math.PI;
+        rotationSpeed.current = -0.007;
+      }
+    },
+    [isRotating]
+  );
+
+  const handleKeyUp = useCallback(
+    (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        setIsRotating(false);
+      }
+    },
+    [setIsRotating]
+  );
+
+  const handleTouchStart = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setIsRotating(true);
+
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const delta = (clientX - lastX.current) / viewport.width;
-
-      islandRef.current.rotation.y += delta * 0.01 * Math.PI;
       lastX.current = clientX;
-      rotationSpeed.current = delta * 0.01 * Math.PI;
-    }
-  };
+    },
+    [setIsRotating]
+  );
+
+  const handleTouchEnd = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setIsRotating(false);
+    },
+    [setIsRotating]
+  );
+
+  const handleTouchMove = useCallback(
+    (e) => {
+      e.stopPropagation();
+
+      if (isRotating) {
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const delta = (clientX - lastX.current) / viewport.width;
+
+        islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+        lastX.current = clientX;
+        rotationSpeed.current = delta * 0.01 * Math.PI;
+      }
+    },
+    [isRotating, viewport.width]
+  );
 
   useLayoutEffect(() => {
     const canvas = gl.domElement;
@@ -120,7 +144,22 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
       canvas.removeEventListener('touchend', handleTouchEnd, eventOptions);
       canvas.removeEventListener('touchmove', handleTouchMove, eventOptions);
     };
-  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+  }, [
+    gl,
+    handlePointerDown,
+    handlePointerUp,
+    handlePointerMove,
+    handleKeyDown,
+    handleKeyUp,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
+    isRotating,
+    setIsRotating,
+    viewport.width,
+    rotationSpeed,
+    islandRef,
+  ]);
 
   useFrame(() => {
     if (!isRotating) {

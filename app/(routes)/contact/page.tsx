@@ -81,12 +81,11 @@ const ContactPage: NextPage = () => {
   const handleBlur = () => setCurrentAnimation('magic_wolf|Idle');
 
   return (
-    <section className='relative flex lg:flex-row flex-col max-container mt-24 px-2'>
+    <section className='page-container'>
       {alert.show && <Alert {...alert} />}
-      {/* <Alert {...alert} /> */}
       <section className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text px-5'>Get in Touch</h1>
-        <form onSubmit={handleSubmit} className='w-full flex flex-col gap-2 mt-10 px-5'>
+        <h1 className='head-text'>Get in Touch</h1>
+        <form onSubmit={handleSubmit} className='w-full flex flex-col gap-2 mt-10'>
           <label className='text-black-500 font-semibold '>Name</label>
           <input
             type='text'
@@ -133,7 +132,7 @@ const ContactPage: NextPage = () => {
           </button>
         </form>
       </section>
-      <section className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+      <section className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[300px]'>
         <Canvas camera={{ position: [0, 0, 5], fov: 75, near: 0.1, far: 1000 }}>
           <directionalLight intensity={2.5} />
           <ambientLight intensity={1} />
