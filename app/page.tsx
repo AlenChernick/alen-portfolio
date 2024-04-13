@@ -42,6 +42,8 @@ const HomePage: NextPage = () => {
       <section className='absolute bottom-2 left-2'>
         <button
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+          aria-label={!isPlayingMusic ? 'Play music' : 'Mute music'}
+          aria-label-by={!isPlayingMusic ? 'Play music' : 'Mute music'}
           className='flex justify-center items-center p-3 rounded-full text-sky-500 bg-white text-center text-2xl shadow-md'>
           {!isPlayingMusic ? <FaVolumeMute /> : <FaVolumeUp />}
         </button>
