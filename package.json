@@ -17,6 +17,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-spinners": "^0.13.8",
     "react-vertical-timeline-component": "^3.6.0",
     "three": "^0.163.0"
   },

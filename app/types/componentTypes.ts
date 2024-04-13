@@ -25,3 +25,7 @@ export type InfoBoxProps = {
   btnText: string;
   linkTitle: string;
 };
+
+export type LoaderProps = {
+  className?: string;
+};

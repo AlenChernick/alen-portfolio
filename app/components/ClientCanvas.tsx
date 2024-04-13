@@ -51,7 +51,14 @@ const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
       className={`w-full h-screen bg-transparent ${
         isRotating ? 'cursor-grabbing' : 'cursor-grab'
       }`}>
-      <Suspense fallback={<Loader />}>
+      <Suspense
+        fallback={
+          <Loader
+            className={
+              'relative bottom-20 md:right-[4.4rem] right-[3.9rem] w-52 h-52 border-opacity-20 border-blue-500 border-t-blue-500'
+            }
+          />
+        }>
         <directionalLight position={[2, 10, 1]} intensity={2.5} />
         <ambientLight intensity={1} />
         <hemisphereLight color='#b1e1ff' groundColor='#000000' intensity={1} />

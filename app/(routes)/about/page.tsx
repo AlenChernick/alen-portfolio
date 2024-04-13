@@ -14,18 +14,18 @@ import Footer from '@/app/components/Footer';
 
 const AboutPage: NextPage = () => {
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
   return (
     <>
-      <section className='page-container lg:flex-col'>
+      <section className='page-container lg:flex-col min-h-full'>
         <h1 className='head-text'>
           Hello, {"I'm"}
           <span className='blue-gradient-text font-semibold drop-shadow'> Alen</span>
         </h1>
-        <section className='mt-5 flex flex-col gap-3 text-slate-500'>
+        <section className='card-container mt-5 flex flex-col gap-3 text-slate-500'>
           <p>
             Full-stack web developer with extensive knowledge and hands-on experience in
             developing robust web applications using cutting-edge technologies.
@@ -33,7 +33,7 @@ const AboutPage: NextPage = () => {
         </section>
         <section className='py-10 flex flex-col'>
           <h3 className='subhead-text'>My Skills</h3>
-          <section className='mt-16 flex flex-wrap gap-12'>
+          <section className='mt-16 flex md:justify-normal justify-center flex-wrap md:gap-12 gap-10'>
             {skills.map((skill: Skill, index: number) => (
               <section
                 className='block-container w-20 h-20'
@@ -64,7 +64,7 @@ const AboutPage: NextPage = () => {
             </p>
           </section>
 
-          <section className='mt-12 flex' ref={ref}>
+          <section className='mt-12 flex md:min-h-full' ref={ref}>
             <VerticalTimeline>
               {experiences.map((experience: Experience) => (
                 <VerticalTimelineElement

@@ -33,7 +33,7 @@ const ProjectsPage: NextPage = () => {
 
   return (
     <>
-      <section className='page-container lg:flex-col'>
+      <section className='page-container block-container lg:flex-col'>
         <h1 className='head-text'>
           My
           <span className='blue-gradient-text font-semibold drop-shadow'> Projects</span>
@@ -49,8 +49,8 @@ const ProjectsPage: NextPage = () => {
         </section>
         <section className='flex flex-wrap my-20 gap-16'>
           {projects.map((project: Project) => (
-            <section className='lg:w-[400px] w-full' key={project.name}>
-              <section className='block-container w-12 h-12'>
+            <section className='block-container lg:w-[400px] w-full' key={project.name}>
+              <section className='inner-block-container w-12 h-12'>
                 <section className={`btn-back rounded-xl ${project.theme}`} />
                 <section className='btn-front rounded-xl flex justify-center items-center'>
                   {renderIcon(project.iconName, 'text-white text-center text-3xl')}
