@@ -2,8 +2,8 @@ import type { Euler } from 'three';
 
 export type PlaneProps = {
   isRotating: boolean;
-  planeScale: number[];
-  planePosition: number[];
+  scale: number[];
+  position: number[];
   rotation: Euler;
 };
 

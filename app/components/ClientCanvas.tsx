@@ -14,11 +14,11 @@ const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
 
   const adjustIslandForScreenSize = () => {
     const rotation = [0.13, 3.89, 0];
-    let screenPosition = [0, -6.8, -45];
+    let screenPosition = [0, -6.8, -47];
     let screenScale = null;
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      screenScale = [0.26, 0.26, 0.26];
+      screenScale = [0.3, 0.3, 0.3];
       screenPosition = [0, -5, -42];
     } else {
       screenScale = [0.4, 0.4, 0.4];
@@ -32,17 +32,17 @@ const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, -4.5, 0];
+      screenPosition = [0, -1, 0];
     } else {
-      screenScale = [4, 4, 4];
-      screenPosition = [0, -4, 0];
+      screenScale = [2.5, 2.5, 2.5];
+      screenPosition = [0, -2, 0];
     }
 
-    return [screenScale, screenPosition];
+    return { screenPosition, screenScale }; // Return both position and scale arrays
   };
 
   const [islandScale, islandPosition, rotation] = adjustIslandForScreenSize();
-  const [planeScale, planePosition] = adjustPlaneForScreenSize();
+  const { screenPosition, screenScale } = adjustPlaneForScreenSize();
   const planeRotation = new Euler(0, 20, 0);
 
   return (
@@ -66,8 +66,8 @@ const ClientCanvas: FC<ClientCanvasProps> = ({ setCurrentStage }) => {
           setCurrentStage={setCurrentStage}
         />
         <Plane
-          planeScale={planeScale}
-          planePosition={planePosition}
+          scale={screenScale}
+          position={screenPosition}
           isRotating={isRotating}
           rotation={planeRotation}
         />

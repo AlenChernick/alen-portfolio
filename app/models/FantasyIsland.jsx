@@ -65,13 +65,14 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
       if (event.key === 'ArrowLeft') {
         if (!isRotating) setIsRotating(true);
 
-        islandRef.current.rotation.y += 0.005 * Math.PI;
-        rotationSpeed.current = 0.007;
+        islandRef.current.rotation.y += 0.01 * Math.PI;
+        rotationSpeed.current = 0.0125;
       } else if (event.key === 'ArrowRight') {
         if (!isRotating) setIsRotating(true);
 
-        islandRef.current.rotation.y -= 0.005 * Math.PI;
+        islandRef.current.rotation.y -= 0.01 * Math.PI;
         rotationSpeed.current = -0.007;
+        rotationSpeed.current = -0.0125;
       }
     },
     [isRotating]
@@ -1359,13 +1360,6 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
         material={materials.bark_2}
         position={[2.393, 39.328, -16.989]}
         rotation={[1.372, -1.405, 1.614]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_238.geometry}
-        material={materials.water}
-        position={[0, -3.036, 0]}
       />
       <mesh
         castShadow
