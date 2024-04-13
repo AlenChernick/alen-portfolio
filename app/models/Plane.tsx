@@ -5,7 +5,9 @@ import type { PlaneProps } from '@/app/types/modelTypes';
 
 const Plane: FC<PlaneProps> = ({ isRotating, position, scale, rotation }) => {
   const ref = useRef<Mesh>(null!);
-  const { scene, animations } = useGLTF('/assets/3d/plane.glb');
+  const { scene, animations } = useGLTF(
+    'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042234/3d/plane_hijmqi.glb'
+  );
   const { actions } = useAnimations(animations, ref);
 
   useLayoutEffect(() => {

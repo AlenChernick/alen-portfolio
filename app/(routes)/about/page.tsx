@@ -44,6 +44,8 @@ const AboutPage: NextPage = () => {
                     fetchPriority='high'
                     loading='eager'
                     src={skill.imageUrl}
+                    width={50}
+                    height={50}
                     alt={skill.name}
                     className='w-1/2 h-1/2 object-contain'
                   />
@@ -74,6 +76,8 @@ const AboutPage: NextPage = () => {
                   icon={
                     <section className='flex justify-center items-center w-full h-full'>
                       <Image
+                        width={50}
+                        height={50}
                         src={experience.icon}
                         alt={experience.companyName}
                         className='w-[60%] h-[60%] object-contain'

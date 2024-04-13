@@ -13,7 +13,9 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 
 const Wolf = ({ currentAnimation, ...props }) => {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('/assets/3d/wolf.glb');
+  const { nodes, materials, animations } = useGLTF(
+    'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042249/3d/wolf_idimz7.glb'
+  );
   const { actions } = useAnimations(animations, group);
 
   useLayoutEffect(() => {

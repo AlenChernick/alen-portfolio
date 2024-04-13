@@ -7,7 +7,9 @@ import { useFrame } from '@react-three/fiber';
 
 const Bird: FC = () => {
   const birdRef = useRef<Mesh>(null!);
-  const { scene, animations } = useGLTF('/assets/3d/bird.glb');
+  const { scene, animations } = useGLTF(
+    'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042201/3d/bird_l8hmsh.glb'
+  );
   const { actions }: AnimationActions = useAnimations(animations, birdRef);
 
   useLayoutEffect(() => {

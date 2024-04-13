@@ -18,6 +18,8 @@ const Footer = () => {
           {socialLinks.map((link: SocialLink) => (
             <Link key={link.name} href={link.link} target='_blank'>
               <Image
+                width={50}
+                height={50}
                 src={link.iconUrl}
                 alt={link.name}
                 className='w-6 h-6 object-contain hover:brightness-125 hover:translate-y-1 transition-all duration-200'

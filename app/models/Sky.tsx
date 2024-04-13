@@ -7,7 +7,9 @@ import type { SkyProps } from '@/app/types/modelTypes';
 import type { Mesh } from 'three';
 
 const Sky: FC<SkyProps> = ({ isRotating }) => {
-  const sky = useGLTF('/assets/3d/sky.glb');
+  const sky = useGLTF(
+    'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042205/3d/sky_bakqsy.glb'
+  );
   const skyRef = useRef<Mesh>(null!);
 
   useFrame((_, delta) => {

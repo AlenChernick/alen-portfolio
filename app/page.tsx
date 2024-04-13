@@ -21,7 +21,9 @@ const HomePage: NextPage = () => {
   }, [isPlayingMusic]);
 
   useLayoutEffect(() => {
-    const audioElement = new Audio('/assets/sakura.mp3');
+    const audioElement = new Audio(
+      'https://res.cloudinary.com/dhrtde6px/video/upload/v1713042368/sakura_j2ysz0.mp3'
+    );
     audioElement.volume = 0.4;
     audioElement.loop = true;
     audioRef.current = audioElement;

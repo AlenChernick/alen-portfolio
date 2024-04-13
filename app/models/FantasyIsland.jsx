@@ -16,7 +16,9 @@ import { useThree, useFrame } from '@react-three/fiber';
 const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   const { gl, viewport } = useThree();
   const islandRef = useRef();
-  const { nodes, materials } = useGLTF('/assets/3d/fantasy_island.glb');
+  const { nodes, materials } = useGLTF(
+    'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042221/3d/fantasy_island_r3c2ph.glb'
+  );
 
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
