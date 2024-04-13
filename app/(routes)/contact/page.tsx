@@ -123,7 +123,6 @@ const ContactPage: NextPage = () => {
             />
             <button
               aria-label='Submit button'
-              aria-label-by={'Submit button'}
               type='submit'
               className='btn hover:text-xl transition:text duration-300'
               disabled={isLoading}
