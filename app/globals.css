@@ -51,7 +51,7 @@
 }
 
 .page-container {
-  @apply relative flex lg:flex-row flex-col mt-24 px-5 max-w-5xl justify-center m-auto;
+  @apply relative flex lg:flex-row flex-col mt-24 mb-3 px-5 max-w-5xl justify-center m-auto;
 }
 
 .cta {
@@ -60,6 +60,14 @@
 
 .cta-text {
   @apply font-extrabold text-black flex-1 text-3xl max-md:text-center;
+}
+
+.footer {
+  @apply max-w-5xl m-auto px-5 pb-6 flex flex-col gap-7;
+}
+
+.footer-container {
+  @apply flex flex-wrap gap-7 items-center md:justify-between justify-center;
 }
 
 .box-shadow-blue {

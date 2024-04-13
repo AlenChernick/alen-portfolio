@@ -14,10 +14,7 @@ import tailwindcss from '@/public/assets/icons/tailwindcss.svg';
 import typescript from '@/public/assets/icons/typescript.svg';
 import linkedin from '@/public/assets/icons/linkedin.svg';
 import twitter from '@/public/assets/icons/twitter.svg';
-import pricewise from '@/public/assets/icons/pricewise.svg';
 import contact from '@/public/assets/icons/contact.svg';
-import soundon from '@/public/assets/icons/soundon.png';
-import soundoff from '@/public/assets/icons/soundoff.png';
 import vuejs from '@/public/assets/icons/vuejs.svg';
 import angular from '@/public/assets/icons/angular.svg';
 import nestjs from '@/public/assets/icons/nestjs.svg';
@@ -66,8 +63,5 @@ export {
   typescript,
   linkedin,
   twitter,
-  pricewise,
   contact,
-  soundon,
-  soundoff,
 };
