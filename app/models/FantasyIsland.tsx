@@ -92,7 +92,7 @@ const FantasyIsland: FC<FantasyIslandProps> = ({
         rotationSpeed.current = -0.0125;
       }
     },
-    [isRotating]
+    [isRotating, setIsRotating]
   );
 
   const handleKeyUp = useCallback(
@@ -231,7 +231,7 @@ const FantasyIsland: FC<FantasyIslandProps> = ({
           setCurrentStage(1);
           break;
         default:
-          setCurrentStage(null);
+          setCurrentStage(null as any);
       }
     }
   });
