@@ -10,7 +10,7 @@ const CallToAction = () => {
       <Link
         href='/contact'
         title='contact-page'
-        className='btn hover:text-lg transition-text duration-300'>
+        className='btn hover:text-lg transition-text duration-300 shadow-md'>
         Contact
       </Link>
     </section>

@@ -51,7 +51,7 @@
 }
 
 .page-container {
-  @apply relative flex lg:flex-row flex-col mt-24 mb-3 px-5 max-w-5xl justify-center m-auto break-keep;
+  @apply relative flex lg:flex-row flex-col mt-24 mb-3 sm:px-6 max-w-5xl m-auto px-4 py-4 justify-center break-keep;
 }
 
 .cta {
@@ -162,6 +162,13 @@
 .block-container:hover > .inner-block-container > .btn-front,
 .block-container:hover > .btn-front {
   transform: translateZ(80px) translateY(-5px) rotateX(15deg) rotateY(15deg);
+}
+
+@media only screen and (max-device-width: 1024px) and (orientation: portrait) {
+  .disable-haptic-touch-ios {
+    touch-action: none;
+    -webkit-touch-callout: none;
+  }
 }
 
 @media only screen and (min-width: 300px) {

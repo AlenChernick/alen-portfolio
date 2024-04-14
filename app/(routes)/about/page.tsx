@@ -1,20 +1,21 @@
 'use client';
 import Image from 'next/image';
 import type { NextPage } from 'next';
+import type { Experience, Skill } from '@/app/types/constantTypes';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import { useInView } from 'react-intersection-observer';
 import { skills, experiences } from '@/app/constants';
-import type { Experience, Skill } from '@/app/types/constantTypes';
+
 import CallToAction from '@/app/components/CallToAction';
 import 'react-vertical-timeline-component/style.min.css';
 import Footer from '@/app/components/Footer';
-
+import { TypeAnimation } from 'react-type-animation';
 const AboutPage: NextPage = () => {
   const { ref, inView } = useInView({
-    threshold: 0.4,
+    threshold: 0.2,
     triggerOnce: true,
   });
 
@@ -25,10 +26,16 @@ const AboutPage: NextPage = () => {
           Hello, {"I'm"}
           <span className='blue-gradient-text font-semibold drop-shadow'> Alen</span>
         </h1>
-        <section className='card-container mt-5 flex flex-col gap-3 text-slate-500'>
+        <section className='card-container mt-5 flex flex-col gap-3 text-slate-500 min-h-12'>
           <p>
-            Full-stack web developer with extensive knowledge and hands-on experience in
-            developing robust web applications using cutting-edge technologies.
+            <TypeAnimation
+              sequence={[
+                `Full-stack web developer with extensive knowledge and hands-on experience in
+              developing robust web applications using cutting-edge technologies.`,
+              ]}
+              speed={65}
+              repeat={0}
+            />
           </p>
         </section>
         <section className='py-10 flex flex-col'>
@@ -57,15 +64,22 @@ const AboutPage: NextPage = () => {
         <section className='py-16'>
           <h3 className='subhead-text'>Work Experience</h3>
           <section className='mt-5 flex flex-col gap-3 text-slate-500'>
-            <p>
-              Dedicated to staying abreast of industry trends and emerging technologies, I
-              am committed to continuous learning and skill expansion. With a proven track
-              record of delivering successful projects, I am confident in my ability to
-              contribute effectively to any team. Eager to further enhance my skills and
-              expertise in the field.
-            </p>
+            {inView && (
+              <p>
+                <TypeAnimation
+                  sequence={[
+                    `Dedicated to staying abreast of industry trends and emerging technologies, I
+                      am committed to continuous learning and skill expansion. With a proven track
+                      record of delivering successful projects, I am confident in my ability to
+                      contribute effectively to any team. Eager to further enhance my skills and
+                      expertise in the field.`,
+                  ]}
+                  speed={70}
+                  repeat={0}
+                />
+              </p>
+            )}
           </section>
-
           <section className='mt-12 flex md:min-h-full' ref={ref}>
             <VerticalTimeline>
               {experiences.map((experience: Experience) => (

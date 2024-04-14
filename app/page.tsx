@@ -36,12 +36,12 @@ const HomePage: NextPage = () => {
   }, []);
 
   return (
-    <section className='w-full h-svh relative'>
+    <section className='w-full h-svh relative disable-haptic-touch-ios'>
       <section className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </section>
       <ClientCanvas setCurrentStage={setCurrentStage} />
-      <section className='absolute bottom-2 left-2'>
+      <section className='absolute bottom-2 left-3'>
         <button
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
           aria-label={!isPlayingMusic ? 'Play music' : 'Mute music'}

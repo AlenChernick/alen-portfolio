@@ -1,8 +1,8 @@
+'use client';
 import type { NextPage } from 'next';
 import type { Project } from '@/app/types/constantTypes';
 import { projects } from '@/app/constants';
 import { FaArrowRight } from 'react-icons/fa6';
-import Link from 'next/link';
 import CallToAction from '@/app/components/CallToAction';
 import {
   BsDiscord,
@@ -12,6 +12,8 @@ import {
   BsFillPersonVcardFill,
 } from 'react-icons/bs';
 import { MdAdminPanelSettings } from 'react-icons/md';
+import { TypeAnimation } from 'react-type-animation';
+import Link from 'next/link';
 import Footer from '@/app/components/Footer';
 
 const ProjectsPage: NextPage = () => {
@@ -38,13 +40,19 @@ const ProjectsPage: NextPage = () => {
           My
           <span className='blue-gradient-text font-semibold drop-shadow'> Projects</span>
         </h1>
-        <section className='mt-5 flex flex-col gap-3 text-slate-500'>
+        <section className='mt-5 flex flex-col gap-3 text-slate-500 max-h-48'>
           <p>
-            {"I've"} embarked on numerous projects throughout the years, but these are the
+            <TypeAnimation
+              sequence={[
+                `I've embarked on numerous projects throughout the years, but these are the
             ones I hold closest to my heart. Many of them are open-source, so if you come
             across something that piques your interest, feel free to explore the codebase
             and contribute your ideas for further enhancements. Your collaboration is
-            highly valued!.
+            highly valued!.`,
+              ]}
+              speed={70}
+              repeat={0}
+            />
           </p>
         </section>
         <section className='flex flex-wrap my-20 gap-16'>

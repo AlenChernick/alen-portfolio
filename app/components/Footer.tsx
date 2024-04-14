@@ -16,7 +16,10 @@ const Footer = () => {
 
         <section className='flex gap-3 justify-center items-center'>
           {socialLinks.map((link: SocialLink) => (
-            <Link key={link.name} href={link.link} target='_blank'>
+            <Link
+              key={link.name}
+              href={link.link}
+              target={link.link === '/contact' ? '_self' : '_blank'}>
               <Image
                 width={50}
                 height={50}

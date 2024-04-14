@@ -1,13 +1,12 @@
 'use client';
 import type { NextPage } from 'next';
-import { type ChangeEvent, Suspense, useRef, useState } from 'react';
+import { type ChangeEvent, Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import emailjs from '@emailjs/browser';
 import Wolf from '@/app/models/Wolf';
 import Loader from '@/app/components/Loader';
-import useAlert from '@/app/hooks/useAlert';
-import Alert from '@/app/components/Alert';
 import Footer from '@/app/components/Footer';
+import toast from 'react-hot-toast';
 
 const ContactPage: NextPage = () => {
   const emailJsServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
@@ -22,8 +21,6 @@ const ContactPage: NextPage = () => {
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentAnimation, setCurrentAnimation] = useState<string>(`magic_wolf|Idle`);
-
-  const { alert, showAlert, hideAlert } = useAlert();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -51,27 +48,21 @@ const ContactPage: NextPage = () => {
       )
       .then(() => {
         setIsLoading(false);
-        showAlert({ isShow: true, text: 'Message sent successfully!', type: 'success' });
 
         setTimeout(() => {
-          hideAlert();
+          toast.success('Message sent successfully!');
           setCurrentAnimation('magic_wolf|Idle');
           setForm({
             name: '',
             email: '',
             message: '',
           });
-        }, 2000);
+        }, 1000);
       })
-      .catch((error) => {
+      .catch(() => {
         setIsLoading(false);
         setCurrentAnimation('magic_wolf|Idle');
-        console.log(error);
-        showAlert({
-          isShow: false,
-          text: "I didn't receive your message.",
-          type: 'danger',
-        });
+        toast.error(`I didn't receive your message.`);
       });
   };
 
@@ -81,7 +72,6 @@ const ContactPage: NextPage = () => {
   return (
     <>
       <section className='page-container'>
-        {alert.show && <Alert {...alert} />}
         <section className='flex-1 min-w-[50%] flex flex-col'>
           <h1 className='head-text'>Get in Touch</h1>
           <form onSubmit={handleSubmit} className='w-full flex flex-col gap-2 mt-10'>

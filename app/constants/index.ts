@@ -228,6 +228,14 @@ export const projects: Project[] = [
     link: 'https://github.com/AlenChernick/discord_clone',
   },
   {
+    iconName: 'BsFillPersonVcardFill',
+    theme: 'btn-back-orange',
+    name: 'Alen Chernick - Portfolio',
+    description:
+      'This Portfolio built with Next.js 14, TypeScript, Tailwind CSS, and Three.js, integrated with Email.js for seamless communication.',
+    link: 'https://github.com/AlenChernick/alen-portfolio',
+  },
+  {
     iconName: 'BsTiktok',
     theme: 'btn-back-red',
     name: 'TikTok Clone - TikTik',
@@ -244,14 +252,6 @@ export const projects: Project[] = [
     link: 'https://github.com/AlenChernick/Sprint4-Shmerllo-frontend',
   },
   {
-    iconName: 'BsFillPersonFill',
-    theme: 'btn-back-yellow',
-    name: 'Job Search App',
-    description:
-      'Discover your next career move with our Job Search app, crafted with React Native and Expo Router for effortless job exploration',
-    link: 'https://github.com/AlenChernick/react_native_jobs_app',
-  },
-  {
     iconName: 'MdAdminPanelSettings',
     theme: 'btn-back-black',
     name: 'Fhoppy - Admin Dashboard',
@@ -260,11 +260,11 @@ export const projects: Project[] = [
     link: 'https://github.com/AlenChernick/fhoppy-admin-dashboard',
   },
   {
-    iconName: 'BsFillPersonVcardFill',
-    theme: 'btn-back-orange',
-    name: 'Alen Chernick - Full Stack Developer Portfolio',
+    iconName: 'BsFillPersonFill',
+    theme: 'btn-back-yellow',
+    name: 'Job Search App',
     description:
-      'This Portfolio built with Next.js 14, TypeScript, Tailwind CSS, and Three.js, integrated with Email.js for seamless communication.',
-    link: 'https://github.com/AlenChernick/alen-portfolio',
+      'Discover your next career move with our Job Search app, crafted with React Native and Expo Router for effortless job exploration',
+    link: 'https://github.com/AlenChernick/react_native_jobs_app',
   },
 ];
