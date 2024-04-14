@@ -8,24 +8,36 @@ Source: https://sketchfab.com/3d-models/fantasy-island-88765d3c5db349e59c39cf9f5
 Title: Fantasy_Island
 */
 
-import React, { useRef, useLayoutEffect, useCallback } from 'react';
+import { useRef, useLayoutEffect, useCallback, type FC } from 'react';
+import type { FantasyIslandProps, Materials, Nodes } from '@/app/types/modelTypes';
 import { useGLTF } from '@react-three/drei';
 import { a } from '@react-spring/three';
 import { useThree, useFrame } from '@react-three/fiber';
+import { Group } from 'three';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
+const FantasyIsland: FC<FantasyIslandProps> = ({
+  isRotating,
+  setIsRotating,
+  setCurrentStage,
+  ...props
+}) => {
   const { gl, viewport } = useThree();
-  const islandRef = useRef();
-  const { nodes, materials } = useGLTF(
+  const islandRef = useRef<Group>(null);
+  const { nodes, materials }: { nodes: Nodes; materials: Materials } = useGLTF(
     'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042221/3d/fantasy_island_r3c2ph.glb'
-  );
+  ) as unknown as GLTF & { nodes: Nodes; materials: Materials };
 
-  const lastX = useRef(0);
-  const rotationSpeed = useRef(0);
-  const dampingFactor = 0.95;
+  const lastX = useRef<number>(0);
+  const rotationSpeed = useRef<number>(0);
+  const dampingFactor: number = 0.95;
 
   const handlePointerDown = useCallback(
-    (event) => {
+    (event: {
+      stopPropagation: () => void;
+      touches: { clientX: any }[];
+      clientX: any;
+    }) => {
       event.stopPropagation();
       setIsRotating(true);
 
@@ -37,7 +49,7 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
   );
 
   const handlePointerUp = useCallback(
-    (event) => {
+    (event: { stopPropagation: () => void }) => {
       event.stopPropagation();
       setIsRotating(false);
     },
@@ -45,14 +57,18 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
   );
 
   const handlePointerMove = useCallback(
-    (event) => {
+    (event: {
+      stopPropagation: () => void;
+      touches: { clientX: number }[];
+      clientX: number;
+    }) => {
       event.stopPropagation();
       if (isRotating) {
         const clientX = event.touches ? event.touches[0].clientX : event.clientX;
 
         const delta = (clientX - lastX.current) / viewport.width;
 
-        islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+        if (islandRef.current) islandRef.current.rotation.y += delta * 0.01 * Math.PI;
 
         lastX.current = clientX;
 
@@ -63,16 +79,16 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
   );
 
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: { key: string }) => {
       if (event.key === 'ArrowLeft') {
         if (!isRotating) setIsRotating(true);
 
-        islandRef.current.rotation.y += 0.01 * Math.PI;
+        if (islandRef.current) islandRef.current.rotation.y += 0.01 * Math.PI;
         rotationSpeed.current = 0.0125;
       } else if (event.key === 'ArrowRight') {
         if (!isRotating) setIsRotating(true);
 
-        islandRef.current.rotation.y -= 0.01 * Math.PI;
+        if (islandRef.current) islandRef.current.rotation.y -= 0.01 * Math.PI;
         rotationSpeed.current = -0.0125;
       }
     },
@@ -80,7 +96,7 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
   );
 
   const handleKeyUp = useCallback(
-    (event) => {
+    (event: { key: string }) => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         setIsRotating(false);
       }
@@ -89,33 +105,41 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
   );
 
   const handleTouchStart = useCallback(
-    (e) => {
-      e.stopPropagation();
+    (event: {
+      stopPropagation: () => void;
+      touches: { clientX: number }[];
+      clientX: number;
+    }) => {
+      event.stopPropagation();
       setIsRotating(true);
 
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
       lastX.current = clientX;
     },
     [setIsRotating]
   );
 
   const handleTouchEnd = useCallback(
-    (e) => {
-      e.stopPropagation();
+    (event: { stopPropagation: () => void }) => {
+      event.stopPropagation();
       setIsRotating(false);
     },
     [setIsRotating]
   );
 
   const handleTouchMove = useCallback(
-    (e) => {
-      e.stopPropagation();
+    (event: {
+      stopPropagation: () => void;
+      touches: { clientX: number }[];
+      clientX: number;
+    }) => {
+      event.stopPropagation();
 
       if (isRotating) {
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientX = event.touches ? event.touches[0].clientX : event.clientX;
         const delta = (clientX - lastX.current) / viewport.width;
 
-        islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+        if (islandRef.current) islandRef.current.rotation.y += delta * 0.01 * Math.PI;
         lastX.current = clientX;
         rotationSpeed.current = delta * 0.01 * Math.PI;
       }
@@ -125,26 +149,26 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
 
   useLayoutEffect(() => {
     const canvas = gl.domElement;
-    const eventOptions = { passive: true };
+    const eventOptions: EventListenerOptions = { passive: true } as EventListenerOptions;
 
-    canvas.addEventListener('pointerdown', handlePointerDown, eventOptions);
-    canvas.addEventListener('pointerup', handlePointerUp, eventOptions);
-    canvas.addEventListener('pointermove', handlePointerMove, eventOptions);
-    window.addEventListener('keydown', handleKeyDown, eventOptions);
-    window.addEventListener('keyup', handleKeyUp, eventOptions);
-    canvas.addEventListener('touchstart', handleTouchStart, eventOptions);
-    canvas.addEventListener('touchend', handleTouchEnd, eventOptions);
-    canvas.addEventListener('touchmove', handleTouchMove, eventOptions);
+    canvas.addEventListener('pointerdown', handlePointerDown as any, eventOptions);
+    canvas.addEventListener('pointerup', handlePointerUp as any, eventOptions);
+    canvas.addEventListener('pointermove', handlePointerMove as any, eventOptions);
+    window.addEventListener('keydown', handleKeyDown as any, eventOptions);
+    window.addEventListener('keyup', handleKeyUp as any, eventOptions);
+    canvas.addEventListener('touchstart', handleTouchStart as any, eventOptions);
+    canvas.addEventListener('touchend', handleTouchEnd as any, eventOptions);
+    canvas.addEventListener('touchmove', handleTouchMove as any, eventOptions);
 
     return () => {
-      canvas.removeEventListener('pointerdown', handlePointerDown, eventOptions);
-      canvas.removeEventListener('pointerup', handlePointerUp, eventOptions);
-      canvas.removeEventListener('pointermove', handlePointerMove, eventOptions);
-      window.removeEventListener('keydown', handleKeyDown, eventOptions);
-      window.removeEventListener('keyup', handleKeyUp, eventOptions);
-      canvas.removeEventListener('touchstart', handleTouchStart, eventOptions);
-      canvas.removeEventListener('touchend', handleTouchEnd, eventOptions);
-      canvas.removeEventListener('touchmove', handleTouchMove, eventOptions);
+      canvas.removeEventListener('pointerdown', handlePointerDown as any, eventOptions);
+      canvas.removeEventListener('pointerup', handlePointerUp as any, eventOptions);
+      canvas.removeEventListener('pointermove', handlePointerMove as any, eventOptions);
+      window.removeEventListener('keydown', handleKeyDown as any, eventOptions);
+      window.removeEventListener('keyup', handleKeyUp as any, eventOptions);
+      canvas.removeEventListener('touchstart', handleTouchStart as any, eventOptions);
+      canvas.removeEventListener('touchend', handleTouchEnd as any, eventOptions);
+      canvas.removeEventListener('touchmove', handleTouchMove as any, eventOptions);
     };
   }, [
     gl,
@@ -169,9 +193,9 @@ const FantasyIsland = ({ isRotating, setIsRotating, setCurrentStage, ...props })
         rotationSpeed.current = 0;
       }
 
-      islandRef.current.rotation.y += rotationSpeed.current;
+      if (islandRef.current) islandRef.current.rotation.y += rotationSpeed.current;
     } else {
-      const rotation = islandRef.current.rotation.y;
+      const rotation = islandRef.current ? islandRef.current.rotation.y : 0;
 
       /**
        * Normalize the rotation value to ensure it stays within the range [0, 2 * Math.PI].
