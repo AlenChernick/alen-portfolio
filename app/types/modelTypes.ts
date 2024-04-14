@@ -18,7 +18,7 @@ export type FantasyIslandProps = {
   rotation: any;
   isRotating: boolean;
   setIsRotating: React.Dispatch<React.SetStateAction<boolean>>;
-  setCurrentStage: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentStage: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 export type WolfProps = {
