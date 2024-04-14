@@ -231,7 +231,7 @@ const FantasyIsland: FC<FantasyIslandProps> = ({
           setCurrentStage(1);
           break;
         default:
-          setCurrentStage(null);
+          setCurrentStage(0);
       }
     }
   });

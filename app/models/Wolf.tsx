@@ -8,18 +8,26 @@ Source: https://sketchfab.com/3d-models/magic-wolf-2b183ca4a3984c1385856ca864c75
 Title: Magic Wolf
 */
 
-import { useLayoutEffect, useRef } from 'react';
+import { type FC, useLayoutEffect, useRef } from 'react';
+import type { Materials, Nodes, WolfProps } from '@/app/types/modelTypes';
+import type { AnimationAction, Group, Mesh } from 'three';
+import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { useGLTF, useAnimations } from '@react-three/drei';
 
-const Wolf = ({ currentAnimation, ...props }) => {
-  const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
+const Wolf: FC<WolfProps> = ({ currentAnimation, ...props }) => {
+  const group = useRef<Group>(null);
+  const {
+    nodes,
+    materials,
+    animations,
+  }: { nodes: Nodes; materials: Materials; animations: any[] } = useGLTF(
     'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042249/3d/wolf_idimz7.glb'
-  );
+  ) as unknown as GLTF & { nodes: Nodes; materials: Materials; animations: any[] };
+
   const { actions } = useAnimations(animations, group);
 
   useLayoutEffect(() => {
-    Object.values(actions).forEach((action) => action.stop());
+    Object.values(actions).forEach((action: AnimationAction | null) => action?.stop());
 
     if (actions[currentAnimation]) {
       actions[currentAnimation].play();
@@ -45,49 +53,49 @@ const Wolf = ({ currentAnimation, ...props }) => {
                       name='Object_71'
                       geometry={nodes.Object_71.geometry}
                       material={materials['mat_test.001']}
-                      skeleton={nodes.Object_71.skeleton}
+                      skeleton={(nodes.Object_71 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_73'
                       geometry={nodes.Object_73.geometry}
                       material={materials.material}
-                      skeleton={nodes.Object_73.skeleton}
+                      skeleton={(nodes.Object_71 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_75'
                       geometry={nodes.Object_75.geometry}
                       material={materials['mat_test.001']}
-                      skeleton={nodes.Object_75.skeleton}
+                      skeleton={(nodes.Object_75 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_77'
                       geometry={nodes.Object_77.geometry}
                       material={materials['mat_test.001']}
-                      skeleton={nodes.Object_77.skeleton}
+                      skeleton={(nodes.Object_77 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_79'
                       geometry={nodes.Object_79.geometry}
                       material={materials['mat_test.001']}
-                      skeleton={nodes.Object_79.skeleton}
+                      skeleton={(nodes.Object_79 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_81'
                       geometry={nodes.Object_81.geometry}
                       material={materials['mat_test.001']}
-                      skeleton={nodes.Object_81.skeleton}
+                      skeleton={(nodes.Object_81 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_83'
                       geometry={nodes.Object_83.geometry}
                       material={materials['mat_test.001']}
-                      skeleton={nodes.Object_83.skeleton}
+                      skeleton={(nodes.Object_83 as any).skeleton}
                     />
                     <skinnedMesh
                       name='Object_85'
                       geometry={nodes.Object_85.geometry}
                       material={materials['mat_test.002']}
-                      skeleton={nodes.Object_85.skeleton}
+                      skeleton={(nodes.Object_85 as any).skeleton}
                     />
                     <group name='Object_70' rotation={[-Math.PI / 2, 0, 0]} scale={100} />
                     <group name='Object_72' rotation={[-Math.PI / 2, 0, 0]} scale={100} />
