@@ -30,10 +30,9 @@ const Wolf: FC<WolfProps> = ({ currentAnimation, ...props }) => {
     Object.values(actions).forEach((action: AnimationAction | null) => action?.stop());
 
     if (actions[currentAnimation]) {
-      actions[currentAnimation].play();
+      actions[currentAnimation]?.play();
     }
   }, [actions, currentAnimation]);
-
   return (
     <group ref={group} {...props} dispose={null}>
       <group name='Sketchfab_Scene'>
