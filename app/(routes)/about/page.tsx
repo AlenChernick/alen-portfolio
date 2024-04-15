@@ -13,6 +13,7 @@ import CallToAction from '@/app/components/CallToAction';
 import 'react-vertical-timeline-component/style.min.css';
 import Footer from '@/app/components/Footer';
 import { TypeAnimation } from 'react-type-animation';
+import ToolTip from '@/app/components/ToolTip';
 const AboutPage: NextPage = () => {
   const { ref, inView } = useInView({
     threshold: 0.2,
@@ -38,25 +39,28 @@ const AboutPage: NextPage = () => {
             />
           </p>
         </section>
+
         <section className='py-10 flex flex-col'>
           <h3 className='subhead-text'>My Skills</h3>
           <section className='mt-16 flex md:justify-normal justify-center flex-wrap md:gap-12 gap-10'>
             {skills.map((skill: Skill, index: number) => (
               <section
-                className='block-container w-20 h-20'
+                className='block-container w-20 h-20 group relative'
                 key={`skill-${skill.name}-${index}`}>
                 <section className='btn-back rounded-xl' />
-                <section className='btn-front rounded-xl flex justify-center items-center'>
+                <section className='flex-col gap-1 btn-front rounded-xl flex justify-center items-center'>
                   <Image
                     fetchPriority='high'
                     loading='eager'
                     src={skill.imageUrl}
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     alt={skill.name}
                     className='w-1/2 h-1/2 object-contain'
                   />
+                  <span className='text-xs text-center'>{skill.name}</span>
                 </section>
+                <ToolTip text={skill.type} />
               </section>
             ))}
           </section>

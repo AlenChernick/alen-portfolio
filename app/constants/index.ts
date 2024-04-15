@@ -142,7 +142,7 @@ export const skills: Skill[] = [
   {
     imageUrl:
       'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042255/icons/gcp_cj5npb.svg',
-    name: 'Google Cloud Platform',
+    name: 'Google Cloud',
     type: 'Cloud Computing',
   },
   {
@@ -160,8 +160,8 @@ export const skills: Skill[] = [
   {
     imageUrl:
       'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042251/icons/ci-cd_mmvzxy.svg',
-    name: 'CI/CD Tool',
-    type: 'Continuous Integration/Continuous Deployment (CI/CD)',
+    name: 'CI / CD',
+    type: 'Cloud Computing',
   },
   {
     imageUrl:
