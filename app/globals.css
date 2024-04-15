@@ -166,9 +166,10 @@
 
 @media only screen and (max-device-width: 1024px) and (orientation: portrait) {
   .disable-haptic-touch-ios {
-    touch-action: none;
     -webkit-touch-callout: none;
+    -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
   }
 }
 
