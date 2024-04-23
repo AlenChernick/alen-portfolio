@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: '/private/',
     },
     sitemap: 'https://alen-portfolio.vercel.app/sitemap.xml',
+    host: 'https://alen-portfolio.vercel.app',
   };
 }
