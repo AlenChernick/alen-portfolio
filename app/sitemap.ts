@@ -8,13 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://alen-portfolio.vercel.app',
       lastModified: currentDate,
       changeFrequency: 'yearly',
-      priority: 1,
+      priority: 0.9,
     },
     {
       url: 'https://alen-portfolio.vercel.app/about',
       lastModified: currentDate,
       changeFrequency: 'yearly',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: 'https://alen-portfolio.vercel.app/projects',
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://alen-portfolio.vercel.app/contact',
       lastModified: currentDate,
       changeFrequency: 'yearly',
-      priority: 0.6,
+      priority: 0.7,
     },
   ];
 }
