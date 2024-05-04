@@ -25,7 +25,10 @@ const AboutPage: NextPage = () => {
       <section className='page-container lg:flex-col min-h-full'>
         <h1 className='head-text'>
           Hello, {"I'm"}
-          <span className='blue-gradient-text font-semibold drop-shadow'> Alen</span>
+          <span className='blue-gradient-text font-semibold drop-shadow'>
+            {' '}
+            Alen
+          </span>
         </h1>
         <section className='card-container mt-5 flex flex-col gap-3 text-slate-500 min-h-12'>
           <p>

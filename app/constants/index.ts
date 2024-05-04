@@ -1,4 +1,9 @@
-import type { Experience, Project, Skill, SocialLink } from '@/app/types/constantTypes';
+import type {
+  Experience,
+  Project,
+  Skill,
+  SocialLink,
+} from '@/app/types/constantTypes';
 
 export const skills: Skill[] = [
   {
@@ -185,14 +190,15 @@ export const experiences: Experience[] = [
     iconBg: '#ffffff',
     date: 'September 2022 - Present',
     points: [
-      'Developed and maintained company platforms and CMS for optimal performance and user experience.',
-      'Collaborated with cross-functional teams to implement innovative features.',
-      'Mentored team developers, focusing on frontend proficiency.',
-      'Incorporated SEO and best practices.',
-      'Optimized SQL queries for improved data handling',
-      'Developed and maintained microservices using C#, ensuring efficient functionality and scalability.',
-      'Designed and implemented React-based micro frontends to enhance user interfaces and optimize user experience.',
-      'Leading two major projects: refactored existing ASP.NET frontend code to Next.js and integrating CMS with Adobe InDesign.',
+      'Developed and maintained company platforms and CMS, ensuring optimized performance and superior user experiences.',
+      'Orchestrated cross-functional collaboration to conceive, plan, and implement innovative features, enhancing product competitiveness.',
+      'Mentored team developers in frontend proficiency, fostering a skilled workforce and ensuring high quality deliverables.',
+      'Implemented strategic SEO techniques, driving significant organic traffic growth and enhancing online visibility',
+      'Optimized SQL queries, improving system performance and data handling efficiency.',
+      'Developed and maintained microservices in C#, ensuring seamless functionality and scalability.',
+      'Engineered React-based micro frontends, enhancing user interfaces and increasing user engagement.',
+      'Integrated CMS with Adobe InDesign, revolutionizing content management workflows and boosting productivity.',
+      'Refactored ASP.NET frontend code to Next.js, leveraging modern web technologies for enhanced performance.',
     ],
   },
 ];
