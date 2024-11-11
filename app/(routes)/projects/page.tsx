@@ -38,7 +38,10 @@ const ProjectsPage: NextPage = () => {
       <section className='page-container block-container lg:flex-col'>
         <h1 className='head-text'>
           My
-          <span className='blue-gradient-text font-semibold drop-shadow'> Projects</span>
+          <span className='blue-gradient-text font-semibold drop-shadow'>
+            {' '}
+            Projects
+          </span>
         </h1>
         <section className='mt-5 flex flex-col gap-3 text-slate-500 max-h-48'>
           <p>
@@ -57,15 +60,20 @@ const ProjectsPage: NextPage = () => {
         </section>
         <section className='flex flex-wrap my-20 gap-16'>
           {projects.map((project: Project) => (
-            <section className='block-container lg:w-[400px] w-full' key={project.name}>
+            <section
+              className='block-container lg:w-[400px] w-full'
+              key={project.name}>
               <section className='inner-block-container w-12 h-12'>
                 <section className={`btn-back rounded-xl ${project.theme}`} />
                 <section className='btn-front rounded-xl flex justify-center items-center'>
-                  {renderIcon(project.iconName, 'text-white text-center text-3xl')}
+                  {renderIcon(
+                    project.iconName,
+                    'text-white text-center text-3xl'
+                  )}
                 </section>
               </section>
               <section className='mt-5 flex flex-col'>
-                <h4 className='text-2xl font-semibold'>{project.name}</h4>
+                <h2 className='text-2xl font-semibold'>{project.name}</h2>
                 <p className='mt-2 text-slate-500'>{project.description}</p>
                 <section className='mt-5 flex items-center gap-2'>
                   <Link

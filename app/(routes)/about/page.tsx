@@ -2,23 +2,26 @@
 import Image from 'next/image';
 import type { NextPage } from 'next';
 import type { Experience, Skill } from '@/app/types/constantTypes';
+import { useMemo, useRef } from 'react';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import { useInView } from 'react-intersection-observer';
 import { skills, experiences } from '@/app/constants';
-
 import CallToAction from '@/app/components/CallToAction';
 import 'react-vertical-timeline-component/style.min.css';
 import Footer from '@/app/components/Footer';
 import { TypeAnimation } from 'react-type-animation';
 import ToolTip from '@/app/components/ToolTip';
+import useMobile from '@/app/hooks/useMobile';
+
 const AboutPage: NextPage = () => {
   const { ref, inView } = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
+  const isMobile = useMobile();
 
   return (
     <>
@@ -44,7 +47,7 @@ const AboutPage: NextPage = () => {
         </section>
 
         <section className='py-10 flex flex-col'>
-          <h3 className='subhead-text'>My Skills</h3>
+          <h2 className='subhead-text'>My Skills</h2>
           <section className='mt-16 flex md:justify-normal justify-center flex-wrap md:gap-12 gap-10'>
             {skills.map((skill: Skill, index: number) => (
               <section
@@ -53,8 +56,7 @@ const AboutPage: NextPage = () => {
                 <section className='btn-back rounded-xl' />
                 <section className='flex-col gap-1 btn-front rounded-xl flex justify-center items-center'>
                   <Image
-                    fetchPriority='high'
-                    loading='eager'
+                    priority={isMobile ? false : true}
                     src={skill.imageUrl}
                     width={40}
                     height={40}
@@ -69,7 +71,7 @@ const AboutPage: NextPage = () => {
           </section>
         </section>
         <section className='py-16'>
-          <h3 className='subhead-text'>Work Experience</h3>
+          <h2 className='subhead-text'>Work Experience</h2>
           <section className='mt-5 flex flex-col gap-3 text-slate-500'>
             {inView && (
               <p>

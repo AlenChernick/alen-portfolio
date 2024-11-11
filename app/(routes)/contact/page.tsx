@@ -10,19 +10,27 @@ import toast from 'react-hot-toast';
 
 const ContactPage: NextPage = () => {
   const emailJsServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
-  const emailJsTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
+  const emailJsTemplateId = process.env
+    .NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
   const emailJsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
   const personalEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL as string;
 
-  const [form, setForm] = useState<{ name: string; email: string; message: string }>({
+  const [form, setForm] = useState<{
+    name: string;
+    email: string;
+    message: string;
+  }>({
     name: '',
     email: '',
     message: '',
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [currentAnimation, setCurrentAnimation] = useState<string>(`magic_wolf|Idle`);
+  const [currentAnimation, setCurrentAnimation] =
+    useState<string>(`magic_wolf|Idle`);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -73,9 +81,17 @@ const ContactPage: NextPage = () => {
     <>
       <section className='page-container'>
         <section className='flex-1 min-w-[50%] flex flex-col'>
-          <h1 className='head-text'>Get in Touch</h1>
-          <form onSubmit={handleSubmit} className='w-full flex flex-col gap-2 mt-10'>
-            <label className='text-black-500 font-semibold '>Name</label>
+          <h1 className='head-text'>
+            Get in
+            <span className='blue-gradient-text font-semibold drop-shadow'>
+              {' '}
+              Touch
+            </span>
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className='w-full flex flex-col gap-2 mt-10'>
+            <label className='text-black-500 font-semibold'>Name</label>
             <input
               type='text'
               name='name'
@@ -99,7 +115,9 @@ const ContactPage: NextPage = () => {
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
-            <label className='text-black-500 font-semibold '>Your Message</label>
+            <label className='text-black-500 font-semibold '>
+              Your Message
+            </label>
             <textarea
               name='message'
               rows={4}
@@ -123,7 +141,8 @@ const ContactPage: NextPage = () => {
           </form>
         </section>
         <section className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[300px]'>
-          <Canvas camera={{ position: [0, 0, 5], fov: 75, near: 0.1, far: 1000 }}>
+          <Canvas
+            camera={{ position: [0, 0, 5], fov: 75, near: 0.1, far: 1000 }}>
             <directionalLight intensity={2.5} />
             <ambientLight intensity={1} />
             <Suspense fallback={<Loader />}>

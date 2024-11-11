@@ -153,13 +153,13 @@ export const skills: Skill[] = [
     imageUrl:
       'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042255/icons/gcp_cj5npb.svg',
     name: 'Google Cloud',
-    type: 'Cloud Computing',
+    type: 'Cloud Platform',
   },
   {
     imageUrl:
       'https://res.cloudinary.com/dhrtde6px/image/upload/v1713042251/icons/azuredevops_sc6ytp.svg',
-    name: 'Azure DevOps',
-    type: 'Source Control',
+    name: 'Azure',
+    type: 'Cloud Platform',
   },
   {
     imageUrl:
