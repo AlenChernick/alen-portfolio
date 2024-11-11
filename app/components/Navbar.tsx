@@ -19,21 +19,21 @@ const Navbar: FC = () => {
           href='/about'
           title='about-page'
           activeClass='text-blue-500'
-          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300'
+          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300 hover:opacity-50 transition-opacity'
         />
         <ClientLink
           text='Projects'
           href='/projects'
           title='projects-page'
           activeClass='text-blue-500'
-          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300'
+          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300 hover:opacity-50 transition-opacity '
         />
         <ClientLink
           text='Contact'
           href='/contact'
           title='contact-page'
           activeClass='text-blue-500'
-          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300'
+          defaultClass='text-black hover:drop-shadow-xl transition-drop-shadow duration-300 hover:opacity-50 transition-opacity'
         />
       </nav>
     </header>

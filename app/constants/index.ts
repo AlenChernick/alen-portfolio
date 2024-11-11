@@ -5,6 +5,11 @@ import type {
   SocialLink,
 } from '@/app/types/constantTypes';
 
+export const websiteURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://alen-portfolio.vercel.app';
+
 export const skills: Skill[] = [
   {
     imageUrl:
